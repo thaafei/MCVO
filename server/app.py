@@ -6,9 +6,19 @@ app.config.from_object(__name__)
 
 CORS(app, resources={r'/*': {'origins': '*'}})
 
+VILLAGES =[
+]
+
 @app.route('/ping',methods=['GET'])
 def ping_pong():
     return jsonify("pong")
+
+@app.route('/village', methods=['GET'])
+def get_villages():
+    return jsonify({
+        'status': 'success',
+        'villages': VILLAGES
+    })
 
 if __name__ == "__main__":
     app.run()
